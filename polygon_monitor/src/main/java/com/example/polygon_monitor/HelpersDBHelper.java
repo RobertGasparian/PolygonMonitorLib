@@ -15,7 +15,7 @@ import java.util.List;
  * Created by User on 8/11/2017.
  */
 
- class HelpersDBHelper extends SQLiteOpenHelper {
+ public class HelpersDBHelper extends SQLiteOpenHelper {
 
 
     private static final int DATABASE_VERSION = 1;
@@ -83,7 +83,7 @@ import java.util.List;
         onCreate(db);
     }
 
-    public void addGeofenceInfo(ModelsGeofenceInfo geofenceInfo) {
+    protected void addGeofenceInfo(ModelsGeofenceInfo geofenceInfo) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         if (!checkIdExistence(geofenceInfo.getId())) {
@@ -101,7 +101,7 @@ import java.util.List;
         }
     }
 
-    public void updateGeofence(ModelsGeofenceInfo geofenceInfo) {
+    protected void updateGeofence(ModelsGeofenceInfo geofenceInfo) {
 
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -132,7 +132,7 @@ import java.util.List;
 
     }
 
-    public void deleteGeofenceInfo(String id) {
+    protected void deleteGeofenceInfo(String id) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_GEOFENCES, _ID + QUERY_MARK, new String[]{id});
@@ -140,7 +140,7 @@ import java.util.List;
 
     }
 
-    public List<ModelsGeofenceInfo> getAllGeofences() {
+    protected List<ModelsGeofenceInfo> getAllGeofences() {
 
         List<ModelsGeofenceInfo> geofenceInfos = new ArrayList<>();
         String selectQuery = SELECT_FROM_ALL + TABLE_GEOFENCES;
@@ -160,7 +160,7 @@ import java.util.List;
 
     }
 
-    public void addQueue(ModelsResponseQueue responseQueue) {
+    protected void addQueue(ModelsResponseQueue responseQueue) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -173,7 +173,7 @@ import java.util.List;
 
     }
 
-    public List<ModelsResponseQueue> getAllQueues() {
+    protected List<ModelsResponseQueue> getAllQueues() {
 
         List<ModelsResponseQueue> responseQueues = new ArrayList<>();
         String selectQuery = SELECT_FROM_ALL + TABLE_QUEUE;
@@ -193,7 +193,7 @@ import java.util.List;
 
     }
 
-    public void deleteQueue(String id) {
+    protected void deleteQueue(String id) {
 
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -205,7 +205,7 @@ import java.util.List;
         db.close();
     }
 
-    public void addPolygonVertex(LatLng latLng, String geoId, int order) {
+    protected void addPolygonVertex(LatLng latLng, String geoId, int order) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -218,14 +218,14 @@ import java.util.List;
         db.close();
     }
 
-    public void deletePolygon(String geoId){
+    protected void deletePolygon(String geoId){
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_POLYGON, GEOFENCE_ID + QUERY_MARK, new String[]{geoId});
         db.close();
     }
 
-    public List<LatLng> getPolygon(String geoId){
+    protected List<LatLng> getPolygon(String geoId){
 
         List<LatLng> polygons = new ArrayList<>();
         List<ModelsPolygonVertex> withOrders = new ArrayList<>();

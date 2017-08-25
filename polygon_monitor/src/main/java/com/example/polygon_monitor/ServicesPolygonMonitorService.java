@@ -33,7 +33,7 @@ import java.util.List;
  * Created by User on 8/17/2017.
  */
 
-class ServicesPolygonMonitorService extends Service {
+public class ServicesPolygonMonitorService extends Service {
 
     private final int INTERVAL = 10000;
     private final int FASTEST_INTERVAL = 5000;

@@ -14,7 +14,7 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.List;
 
 
- class ReceiversGeofenceEventReceiver extends BroadcastReceiver {
+ public class ReceiversGeofenceEventReceiver extends BroadcastReceiver {
 
     public static final String GEOFENCE_ACTION = "com.example.polygon_monitor.receivers.ENTER_INTENT";
     public static final String ENTER_POLYGON = "com.example.polygon_monitor.receivers.ENTER_POLYGON_INTENT";

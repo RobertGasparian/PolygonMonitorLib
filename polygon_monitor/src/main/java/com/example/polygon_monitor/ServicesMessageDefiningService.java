@@ -32,7 +32,7 @@ import java.util.List;
  * Created by User on 8/14/2017.
  */
 
- class ServicesMessageDefiningService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+ public class ServicesMessageDefiningService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
 
     private GoogleApiClient googleApiClient;
@@ -75,7 +75,7 @@ import java.util.List;
         return START_STICKY;
     }
 
-    public void handleJson(String coordinates) {
+    protected void handleJson(String coordinates) {
 
 
         int action;
@@ -152,7 +152,7 @@ import java.util.List;
     }
 
 
-    public void addGeofenceMonitor(double latitude, double longitude, float radius, final String geoId, final ModelsGeofenceInfo geofenceInfo) {
+    private void addGeofenceMonitor(double latitude, double longitude, float radius, final String geoId, final ModelsGeofenceInfo geofenceInfo) {
 
 
         Geofence.Builder builder = new Geofence.Builder();
@@ -211,7 +211,7 @@ import java.util.List;
 
     }
 
-    public void deleteGeofence(final String id) {
+    private void deleteGeofence(final String id) {
 
 
         List<String> idList = new ArrayList<>();
@@ -250,7 +250,7 @@ import java.util.List;
 
     }
 
-    public long getMillisTillMidnight() {
+    private long getMillisTillMidnight() {
 
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_MONTH, 1);
